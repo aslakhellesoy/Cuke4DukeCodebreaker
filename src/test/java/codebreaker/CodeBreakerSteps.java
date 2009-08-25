@@ -1,13 +1,24 @@
 package codebreaker;
 
-import cuke4duke.Given;
+import cuke4duke.*;
+import static org.junit.Assert.*;
 
 public class CodeBreakerSteps {
     private Game game;
+    private String mark;
     
     @Given("the secret code is (.*)")
     public void theSecretCodeIs(String code) {
         game = new Game(code);
     }
 
+    @When("I guess (.*)")
+    public void iGuess(String code) {
+        mark = game.guess(code);
+    }
+
+    @Then("the mark should be (.*)")
+    public void theMarkShouldBe(String code) {
+        assertEquals(code, mark);
+    }
 }
