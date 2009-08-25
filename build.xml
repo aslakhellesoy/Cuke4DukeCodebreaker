@@ -3,13 +3,25 @@
   <property name="gem.home" value="${dotgem.parent}/.gem"/>
   <property name="cucumber.bin" value="${gem.home}/bin/cucumber"/>
 
-  <target name="compile-steps" description="Compile test classes">
+  <path id="lib">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <target name="compile-main" description="Compile main classes">
+    <mkdir dir="target/classes"/>
+    <javac srcdir="src/main/java" destdir="target/classes">
+      <classpath refid="lib" />
+    </javac>
+  </target>
+
+  <target name="compile-steps" depends="compile-main" description="Compile test classes">
     <mkdir dir="target/test-classes"/>
     <javac srcdir="src/test/java" destdir="target/test-classes">
+      <classpath refid="lib" />
       <classpath>
-        <fileset dir="lib">
-          <include name="**/*.jar"/>
-        </fileset>
+        <pathelement location="target/classes"/>
       </classpath>
     </javac>
   </target>
@@ -22,6 +34,7 @@
         <fileset dir="lib">
           <include name="**/*.jar"/>
         </fileset>
+        <pathelement location="target/classes"/>
         <pathelement location="target/test-classes"/>
       </classpath>
       <env key="GEM_PATH" value="${gem.home}"/>
@@ -71,10 +84,6 @@
 
   <target name="clean" description="Delete all generated artifacts">
     <delete dir="${basedir}/target"/>
-    <delete dir="${basedir}/lib/.gem"/>
-    <delete>
-      <fileset dir="${basedir}/lib" includes=".jar"/>
-    </delete>
   </target>
 
 </project>
