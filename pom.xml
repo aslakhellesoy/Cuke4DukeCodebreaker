@@ -82,7 +82,7 @@
             <arg>${basedir}/src/test/java</arg>
           </args>
           <gems>
-            <gem>cucumber:0.3.97</gem>
+            <gem>cucumber:0.3.98</gem>
           </gems>
         </configuration>
         <executions>
