@@ -4,15 +4,15 @@ import codebreaker.Game
 import cuke4duke.*
 import static org.junit.Assert.*
 
-Given(~/the secret code is (.*)/) { String code ->
+Given(~/YYthe secret code is (.*)/) { String code ->
     game = new Game(stripSpace(code))
 }
 
-When(~/I guess (.*)/) { String code ->
+When(~/YYI guess (.*)/) { String code ->
     mark = game.guess(stripSpace(code))
 }
 
-Then(~/the mark should be (.*)/) { String code ->
+Then(~/YYthe mark should be (.*)/) { String code ->
     assertEquals(code, mark)
 }
 
