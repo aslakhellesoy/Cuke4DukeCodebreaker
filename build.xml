@@ -2,6 +2,7 @@
   <property name="dotgem.parent" value="${basedir}/lib"/>
   <property name="gem.home" value="${dotgem.parent}/.gem"/>
   <property name="cucumber.bin" value="${gem.home}/bin/cucumber"/>
+  <property name="feature" value="features" />
 
   <path id="lib">
     <fileset dir="lib">
@@ -51,7 +52,7 @@
       <arg value="junit"/>
       <arg value="--out"/>
       <arg value="target/junit-report"/>
-      <arg value="features"/>
+      <arg value="${feature}"/>
     </java>
   </target>
 
