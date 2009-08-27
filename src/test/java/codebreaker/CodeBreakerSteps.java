@@ -3,8 +3,6 @@ package codebreaker;
 import cuke4duke.*;
 import static org.junit.Assert.*;
 
-import java.util.regex.Pattern;
-
 public class CodeBreakerSteps {
     private Game game;
     private String mark;
