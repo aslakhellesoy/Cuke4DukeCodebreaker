@@ -7,17 +7,17 @@ public class CodeBreakerSteps {
     private Game game;
     private String mark;
     
-    @Given("the secret code is (.*)")
+    @Given("XXthe secret code is (.*)")
     public void theSecretCodeIs(String code) {
         game = new Game(stripSpace(code));
     }
 
-    @When("I guess (.*)")
+    @When("XXI guess (.*)")
     public void iGuess(String code) {
         mark = game.guess(stripSpace(code));
     }
 
-    @Then("the mark should be (.*)")
+    @Then("XXthe mark should be (.*)")
     public void theMarkShouldBe(String code) {
         assertEquals(code, mark);
     }
